@@ -42,14 +42,14 @@ const execute = async () => {
     let lines = require('fs').readFileSync(`${process.env.FILENAME}.csv`, 'utf-8')
       .split('\n');
 
-    lines = lines.filter((line) => {
+    lines = lines.filter((line) => { //remove unvalidated line
       let elements = line.split(',');
       if (elements.length == columns.length && !isNaN(parseInt(elements[1])))
         return true;
       return false;
     });
 
-    lines.sort((a, b) => {
+    lines.sort((a, b) => { //sort by toke_id as number for the fast comparing
       let a_arr = a.split(',');
       let b_arr = b.split(',');
 
